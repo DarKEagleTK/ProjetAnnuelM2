@@ -12,3 +12,10 @@ Orchestration avancée avec Kubernetes/Ceph : Déploiement automatique via Terra
 - Git (gitlab ci/cd)
 - Ansible
 - Rundeck
+
+
+## Applications installées
+
+ - Rocket Chat
+ - Wordpress
+ - MySQL
