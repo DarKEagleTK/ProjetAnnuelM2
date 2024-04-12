@@ -1,4 +1,8 @@
 # Partie Technique
+
+Voici ci-dessous le schéma logique de l'infrastructure :
+![Schema Infra](/Technique/schemainfra.png)
+
 - L'étude de faisabilité avec définition de l'objet permettant d'estimer les coûts est réalisée. Le dossier de faisabilité est remis au comité de pilotage pour l'étude des scénarios [Faisabilité du projet]
 - Une analyse plus approfondie des besoins est conduite visant à formaliser un document contractuel entre le maître d'oeuvre et le maître d'ouvrage [Analyse des besoins]
 - Les risques et les contraintes liés au projet sont identifiés. [Analyse des risques]

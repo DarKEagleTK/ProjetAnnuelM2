@@ -1,8 +1,41 @@
 # ProjetAnnuelM2
 
+Grilles d'évaluation = équivalent création de cahier des charges pour répondre à une appel d'offre
+Mettre en place la partie fonctionnelle, décisionnelle, technique d'un projet
+(pas obliger de faire le doc de 40 pages, genre 4 pages)
+
 ## Le projet
 
 Orchestration avancée avec Kubernetes/Ceph : Déploiement automatique via Terraform, Intégration continue avec Git CI, et Automatisation du déploiement d'applications et de la gestion avec Rundeck.
+
+Objectif : Intégration automatique sur Kubernetes
+
+Voici ci-dessous le schéma logique de l'infrastructure :
+![Schema Infra](/Technique/schemainfra.png)
+
+Scénarios :
+- 2 serveurs géographiquement séparer en hyperviseur Proxmox
+
+Terraform - Rundeck : Louise-Anne
+CEPH : Raph
+Git Ci : Houssine
+Kubernetes : Dimitri
+
+## Technologie utilisés
+
+- Kubernetes
+- Ceph
+- Terraform
+- Git (gitlab ci/cd)
+- Ansible
+- Rundeck
+
+
+## Applications installées
+
+ - Rocket Chat
+ - Wordpress
+ - MySQL
 
 ## Partie Technique
 - L'étude de faisabilité avec définition de l'objet permettant d'estimer les coûts est réalisée. Le dossier de faisabilité est remis au comité de pilotage pour l'étude des scénarios [Faisabilité du projet]
@@ -26,18 +59,3 @@ Orchestration avancée avec Kubernetes/Ceph : Déploiement automatique via Terra
 - Schématisation des risques juridiques du projet
 - Préconisations pour le respect des règles juridiques
 
-## Technologie utilisés
-
-- Kubernetes
-- Ceph
-- Terraform
-- Git (gitlab ci/cd)
-- Ansible
-- Rundeck
-
-
-## Applications installées
-
- - Rocket Chat
- - Wordpress
- - MySQL
