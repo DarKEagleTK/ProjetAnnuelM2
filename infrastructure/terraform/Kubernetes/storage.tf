@@ -15,7 +15,7 @@ resource "libvirt_volume" "master_debian11" {
 # Disque pour la VM
 resource "libvirt_volume" "main_disque" {
     name = "serv-pa-kubernetes-00${count.index}-disque"
-    pool = libvirt_pool.local.name
+    pool = libvirt_pool.pa-kubernetes.name
     base_volume_id = libvirt_volume.master_debian11.id
     size = 21474836480 # 20Gb
     count = var.workers_count

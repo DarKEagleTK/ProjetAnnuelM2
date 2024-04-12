@@ -1,6 +1,6 @@
 // Create the machine
 resource "libvirt_domain" "domain" {
-  name = "${var.hostname}"
+  name = "serv-pa-kubernetes-00${count.index}"
   memory = var.memoryMB
   vcpu = var.cpu
 
@@ -11,7 +11,7 @@ resource "libvirt_domain" "domain" {
     network_name = var.network_name
   }
 
-  cloudinit = libvirt_cloudinit_disk.commoninit.id
+  cloudinit = libvirt_cloudinit_disk.commoninit[count.index].id
   #qemu_agent = true
 
   # IMPORTANT
@@ -32,7 +32,7 @@ resource "libvirt_domain" "domain" {
   }
 
   count = var.workers_count
-  depends_on = [ libvirt_pool.local ]
+  depends_on = [ libvirt_pool.pa-kubernetes ]
 }
 
 output "ips" {
