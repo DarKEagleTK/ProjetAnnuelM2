@@ -25,7 +25,6 @@ resource "libvirt_volume" "main_disque" {
 resource "libvirt_volume" "disque2" {
     name = "serv-pa-ceph-00${count.index}-disque2"
     pool = libvirt_pool.pa-ceph.name
-    base_volume_id = libvirt_volume.master_debian11.id
     size = 21474836480 # 20Gb
     count = var.workers_count
 }

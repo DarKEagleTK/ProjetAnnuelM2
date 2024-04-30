@@ -9,7 +9,7 @@ resource "libvirt_pool" "pa-kubernetes" {
 resource "libvirt_volume" "master_debian11" {
     name = "master_debian11"
     pool = libvirt_pool.pa-kubernetes.name
-    source = "/mnt/storage-local/vm-disk/templates/debian-11-cloud-init-base.qcow2"
+    source = "/mnt/storage-local/vm-disk/templates/jammy-server-cloudimg-amd64-disk-kvm.img"
 }
 
 # Disque pour la VM
