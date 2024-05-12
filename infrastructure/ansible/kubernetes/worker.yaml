@@ -11,7 +11,7 @@
         join_command: "{{ join_command_raw.stdout_lines[0] }}"
 
 
-- hosts: workers
+- hosts: kubernetes_worker
   become: yes
   tasks:
     - name: TCP port 6443 on master is reachable from worker
@@ -20,5 +20,5 @@
     - name: join cluster
       shell: "{{ hostvars['k8s-master-1'].join_command }} >> node_joined.log"
       args:
-        chdir: /home/ubuntu
+        chdir: /home/admuser
         creates: node_joined.log
