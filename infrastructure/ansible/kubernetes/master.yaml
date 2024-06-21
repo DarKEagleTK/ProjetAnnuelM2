@@ -57,3 +57,18 @@
       args:
         chdir: $HOME
         creates: pod_network_setup.log
+
+    - name: Copy metallb configuration on server
+      copy:
+        src: ./metallb/configmap.yaml
+        dest: /home/admuser/configmap-metallb.yaml
+        owner: admuser
+        mode: 644
+    
+    - name: install metallb
+      become: yes
+      become_user: admuser
+      shell: kubectl apply -f ~/configmap-metallb.yaml >> metallb_setup.log
+      args:
+        chdir: $HOME
+        creates: metallb_setup.log
