@@ -8,11 +8,17 @@ RD_OPTION_APP="nginx"
 # Effectuer la recherche et extraire l'ID du premier projet trouvé
 response=$(curl --header "PRIVATE-TOKEN: $RD_OPTION_PRIVATE_TOKEN" "$RD_OPTION_GITLAB_HOST/api/v4/projects?search=$RD_OPTION_APP")
 
-# Extraire l'ID du projet en utilisant awk (supposant que le format JSON est simple)
-project_id=$(echo "$response" | grep -o '"id":[0-9]*' | awk -F: '{print $2}' | head -n 1)
+# Vérifier si la commande curl a réussi (code HTTP 200)
+if [ $? -ne 0 ]; then
+    echo "Erreur lors de l'exécution de la commande curl."
+    exit 1
+fi
+
+# Extraire l'ID du premier projet correspondant
+project_id=$(echo "$response" | jq '.[0].id')
 
 # Vérifier si l'ID du projet est vide
-if [ -z "$project_id" ]; then
+if [ -z "$project_id" ] || [ "$project_id" == "null" ]; then
     echo "Aucun projet trouvé avec le terme de recherche '$RD_OPTION_APP'."
     exit 1
 fi
