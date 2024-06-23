@@ -36,3 +36,5 @@ else
     echo "$delete_response"
     exit 1
 fi
+
+rm -r RD_OPTION_APP-folder
