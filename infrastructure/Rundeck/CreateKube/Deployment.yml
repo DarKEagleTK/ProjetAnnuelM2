@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${option.APP}-deployment
+  labels:
+    app: ${option.APP}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ${option.APP}
+  template:
+    metadata:
+      labels:
+        app: ${option.APP}
+    spec:
+      containers:
+      - name: ${option.APP}
+        image: ${option.APP}:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /etc/${option.APP}
+          name: ${option.APP}-conf
+          readOnly: true
+        - mountPath: /var/log/${option.APP}
+          name: log
+      volumes:
+      - name: ${option.APP}-conf
+        configMap:
+          name: ${option.APP}-conf
+          items:
+          - key: ${option.APP}.conf
+            path: ${option.APP}.conf
+          - key: virtualhost.conf
+            path: virtualhost/virtualhost.conf
+      - name: log
+        emptyDir: {}
