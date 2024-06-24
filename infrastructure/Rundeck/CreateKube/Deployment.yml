@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+${option.APP}apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ${option.APP}-deployment
@@ -18,16 +18,10 @@ spec:
           ports:
             - containerPort: 80
           volumeMounts:
-            - name: config-volume
-              mountPath: /etc/${option.APP}/conf.d
-              readOnly: true
-            - name: website-volume
+            - name: ${option.APP}-website-volume
               mountPath: /usr/share/${option.APP}/html
               readOnly: true
       volumes:
-        - name: config-volume
-          configMap:
-            name: ${option.APP}-server-config
-        - name: website-volume
+        - name: ${option.APP}-website-volume
           configMap:
             name: ${option.APP}-website

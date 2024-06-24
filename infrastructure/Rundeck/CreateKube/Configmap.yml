@@ -1,48 +1,13 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ${option.APP}-server-config
+  name: ${option.APP}-website
 data:
-  ${option.APP}.conf: |
-    worker_processes  3;
-    error_log  /var/log/${option.APP}/error.log;
-    events {
-      worker_connections  10240;
-    }
-    http {
-      log_format  main
-              'remote_addr:$remote_addr\t'
-              'time_local:$time_local\t'
-              'method:$request_method\t'
-              'uri:$request_uri\t'
-              'host:$host\t'
-              'status:$status\t'
-              'bytes_sent:$body_bytes_sent\t'
-              'referer:$http_referer\t'
-              'useragent:$http_user_agent\t'
-              'forwardedfor:$http_x_forwarded_for\t'
-              'request_time:$request_time';
-
-      access_log	/var/log/${option.APP}/access.log main;
-
-      server {
-          listen       80;
-          server_name  _;
-
-          location / {
-              root   /usr/share/${option.APP}/html;
-              index  index.html index.htm;
-          }
-      }
-      include /etc/${option.APP}/virtualhost/virtualhost.conf;
-    }
-
-  mime.types: |
-    text/html                          html htm shtml;
-    text/css                           css;
-    text/xml                           xml;
-    image/gif                          gif;
-    image/jpeg                         jpeg jpg;
-    application/javascript             js;
-    application/atom+xml               atom;
-    application/rss+xml                rss;
+  index.html: |
+    <html>
+    <h1>Les grandes perches (et la oompa loompa)</h1>
+    <body>
+    Vous ne croirez jamais ce que se cache derriere ce lien ! Decouvrez le contenu le plus etonnant de tous les temps ! <br />
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Cliquez ici !</a>
+    </body>
+    </html>
