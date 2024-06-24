@@ -1,12 +1,11 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ${option.APP}-conf
+  name: ${option.APP}-server-config
 data:
-  nginx.conf: |
-    user nginx;
+  ${option.APP}.conf: |
     worker_processes  3;
-    error_log  /var/log/nginx/error.log;
+    error_log  /var/log/${option.APP}/error.log;
     events {
       worker_connections  10240;
     }
@@ -24,35 +23,26 @@ data:
               'forwardedfor:$http_x_forwarded_for\t'
               'request_time:$request_time';
 
-      access_log	/var/log/nginx/access.log main;
+      access_log	/var/log/${option.APP}/access.log main;
 
       server {
           listen       80;
           server_name  _;
 
           location / {
-              root   /usr/share/nginx/html;
+              root   /usr/share/${option.APP}/html;
               index  index.html index.htm;
           }
       }
-      include /etc/nginx/virtualhost/virtualhost.conf;
-    }
-  virtualhost.conf: |
-    upstream app {
-        server 10.106.239.67:80;
-        keepalive 1024;
+      include /etc/${option.APP}/virtualhost/virtualhost.conf;
     }
 
-    server {
-        listen 80 default_server;
-        server_name _;
-
-        location / {
-            proxy_pass http://app;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection 'upgrade';
-            proxy_set_header Host $host;
-            proxy_cache_bypass $http_upgrade;
-        }
-    }
+  mime.types: |
+    text/html                          html htm shtml;
+    text/css                           css;
+    text/xml                           xml;
+    image/gif                          gif;
+    image/jpeg                         jpeg jpg;
+    application/javascript             js;
+    application/atom+xml               atom;
+    application/rss+xml                rss;

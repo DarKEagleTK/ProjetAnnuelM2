@@ -21,9 +21,10 @@ metadata:
   name: ${option.APP}-service-lb
 spec:
   type: LoadBalancer
-  selector:
-    app: ${option.APP}
+  loadBalancerIP: 10.1.0.51  # Adresse IP statique souhaitée
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
+  selector:
+    app: ${option.APP}

@@ -1,13 +1,33 @@
-apiVersion: v1
-kind: ConfigMap
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: ${option.APP}-website
-data:
-  index.html: |
-    <html>
-    <h1>Les grandes perches (et la oompa loompa)</h1>
-    <body>
-    Hello World !
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=cUEYOaVJgC84u8uz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </body>
-    </html>
+  name: ${option.APP}-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${option.APP}
+  template:
+    metadata:
+      labels:
+        app: ${option.APP}
+    spec:
+      containers:
+        - name: ${option.APP}
+          image: ${option.APP}
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: ${option.APP}-website
+              mountPath: /usr/share/${option.APP}/html
+              readOnly: true
+            - name: ${option.APP}-server-config
+              mountPath: /etc/${option.APP}
+              readOnly: true
+      volumes:
+        - name: ${option.APP}-website
+          configMap:
+            name: ${option.APP}-website
+        - name: ${option.APP}-server-config
+          configMap:
+            name: ${option.APP}-server-config
