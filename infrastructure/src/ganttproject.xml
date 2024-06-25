@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="AUTOMATISATION DU DÉPLOIEMENT D’APPLICATIONS" company="ExampleCompany" version="1.10.3" view-date="2023-12-06T00:00:00">
+    <calendars>
+        <default-week>
+            <day closed="false" index="1"/>
+            <day closed="false" index="2"/>
+            <day closed="false" index="3"/>
+            <day closed="false" index="4"/>
+            <day closed="false" index="5"/>
+            <day closed="true" index="6"/>
+            <day closed="true" index="7"/>
+        </default-week>
+    </calendars>
+    <tasks>
+        <task id="1" name="Préparation et Planification" start="2023-12-06" duration="18" complete="0">
+            <task id="11" name="Analyse des besoins" start="2023-12-06" duration="7" complete="0"/>
+            <task id="12" name="Étude de faisabilité" start="2023-12-13" duration="8" complete="0"/>
+            <task id="13" name="Planification du projet et définition des objectifs" start="2023-12-21" duration="16" complete="0"/>
+        </task>
+        <task id="2" name="Infrastructure et Configuration" start="2024-01-11" duration="55" complete="0">
+            <task id="21" name="Configuration réseau et sécurité" start="2024-01-11" duration="12" complete="0"/>
+            <task id="22" name="Création des Machines Virtuelles (VMs)" start="2024-01-29" duration="29" complete="0">
+                <task id="221" name="Création des VMs" start="2024-01-29" duration="9" complete="0"/>
+                <task id="222" name="Configuration initiale des VMs" start="2024-02-07" duration="20" complete="0"/>
+            </task>
+        </task>
+        <task id="3" name="Configuration des Services" start="2024-03-03" duration="15" complete="0">
+            <task id="31" name="Installation et configuration de Rundeck" start="2024-03-03" duration="5" complete="0"/>
+            <task id="32" name="Installation et configuration de GitLab CI/CD" start="2024-03-10" duration="5" complete="0"/>
+            <task id="33" name="Installation et configuration de Terraform" start="2024-03-17" duration="5" complete="0"/>
+            <task id="34" name="Installation et configuration de Ceph" start="2024-03-24" duration="5" complete="0"/>
+        </task>
+        <task id="4" name="Développement et Tests" start="2024-04-01" duration="60" complete="0">
+            <task id="41" name="Développement des scripts d’automatisation" start="2024-04-01" duration="25" complete="0"/>
+            <task id="42" name="Tests unitaires et d’intégration" start="2024-04-26" duration="15" complete="0"/>
+            <task id="43" name="Tests de performance et de charge" start="2024-05-11" duration="15" complete="0"/>
+            <task id="44" name="Ajustements et corrections" start="2024-05-26" duration="5" complete="0"/>
+        </task>
+        <task id="5" name="Clôture du Projet" start="2024-06-03" duration="25" complete="0">
+            <task id="51" name="Clôture et documentation" start="2024-06-03" duration="25" complete="0"/>
+        </task>
+    </tasks>
+    <resources/>
+    <allocations/>
+</project>
