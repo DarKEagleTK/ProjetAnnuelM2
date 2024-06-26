@@ -12,5 +12,5 @@ deploy-configmap:
     entrypoint: ['']
   script:
     - kubectl config use-context $KUBE_CONTEXT
-    - kubectl appli -f $CI_PROJECT-DIR/configmap.yaml
+    - kubectl apply -f $CI_PROJECT_DIR/configmap.yaml
   
