@@ -1,0 +1,16 @@
+# deploy step
+variables:
+  KUBE_CONTEXT: elite/k8s-connection:k8s-connection
+
+stages:
+  - deploy
+
+deploy-configmap:
+  stage: deploy
+  image:
+    name: bitnami/kubectl:latest
+    entrypoint: ['']
+  script:
+    - kubectl config use-context $KUBE_CONTEXT
+    - kubectl appli -f $CI_PROJECT-DIR/configmap.yaml
+  

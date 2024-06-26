@@ -1,0 +1,3 @@
+ci-access:
+  groups:
+    - id: Rundeck/nginx-project
