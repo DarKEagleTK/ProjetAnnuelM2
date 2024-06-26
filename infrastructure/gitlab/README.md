@@ -22,7 +22,8 @@ helm upgrade --install k8s-connection gitlab/gitlab-agent \
     --create-namespace \
     --set image.tag=v17.1.0 \
     --set config.token=<token> \
-    --set config.kasAddress=ws://172.16.42.27:/-/kubernetes-agent/
+    --set config.kasAddress=ws://172.16.42.27:8080/-/kubernetes-agent/
+    --set replicas=1
 ```
 
 ## Etape 2 : Ci/Cd
